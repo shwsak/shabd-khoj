@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import './App.css'
 import SearchCard from './components/SearchCard'
-import SearchContainer from './components/search-container'
+import SearchContainer from './components/SearchContainer'
 import logo from './assets/logo.png'
 import MoonLoader from "react-spinners/MoonLoader ";
 import { useEffect } from 'react';
