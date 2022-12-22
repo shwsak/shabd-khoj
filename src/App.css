@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.search-basic{
+  padding: 70px;
+}
+
+.search-bg{
+  background-color: #1d4e89;
+}
+
+.search-logo{
+  width: 210px;
+}
+.search-button{
+  background-color: #f79256;
+}
+
+.card{
+  background-color: #eeeeee;
+  border: none;
+}
+
+.card-word{
+  font-size: 45px;
+  color:#f79256;
+}
+
+.card-pos{
+  color: #666666;
+}
+
+.card-meanings{
+  color: #1A1A1A;
+}
+
+.card-icon{
+  font-size: 24px;
+  padding: 12px;
+  border: 1px solid rgb(127, 127, 127);
+  border-radius: 50%;
+  color:#f79256;
+  cursor: pointer;
+}
+
+.similar{
+    padding: 2px 10px;
+    border: 1px solid #000;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+}
+
+.loader{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 250px;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
