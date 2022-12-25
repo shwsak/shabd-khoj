@@ -14,8 +14,6 @@ function App() {
   const [dictionary, setDictionary] = useState([""])
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(dictionary)
-
 
   const inputRef = useRef("");
   const searchWord = inputRef.current.value || defaultVal;
@@ -25,10 +23,10 @@ function App() {
   }, [])
 
 
-  async function getDictionary(defaultWord = "") {
+  async function getDictionary() {
 
     let word = inputRef.current.value;
-
+    
     setIsLoading(true);
 
     if (!word) {
@@ -36,8 +34,6 @@ function App() {
     }
     const url = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + word);
     const json = await url.json();
-
-
 
     if (url.status != 200) {
       setDictionary([() => []])
@@ -48,18 +44,16 @@ function App() {
     setIsLoading(false);
 
   }
+ 
 
-  const dictFirst = dictionary[0];
-
-  let phonetic = dictFirst.phonetic || "";
+  const dictData = dictionary[0];   
+  let phonetic = dictData.phonetic || "";
 
 
   let meanings;
 
-  if (dictFirst.meanings) {
-
-
-    meanings = dictFirst.meanings.map((m) => {
+  if (dictData.meanings) {
+    meanings = dictData.meanings.map((m) => {
       const pos = m.partOfSpeech;
       const definitions = m.definitions.map((d) => {
         const definition = d.definition;
@@ -73,20 +67,20 @@ function App() {
     })
   }
 
-  let phonecticsArray = dictFirst.phonetics || "";
+  let phonecticsArray = dictData.phonetics || "";
   let getAudio = phonecticsArray[0];
-
 
   let audio = getAudio ? getAudio.audio : "";
 
-
-  function soundClick() {
+  function handleSound() {
     let playAudio = new Audio(audio);
-    playAudio.play();
+    playAudio.play()
+
+    if(playAudio === "undefined"){
+      alert("sorry no audio is found")
+    }
+    
   }
-
-
-
 
   return (
     <>
@@ -96,11 +90,10 @@ function App() {
           <MoonLoader color="#f79256" size={38} />
         </div>
         : (meanings ?
-          <SearchCard word={searchWord} phonectics={phonetic} meanings={meanings} audio={soundClick} />
+          <SearchCard word={searchWord} phonectics={phonetic} meanings={meanings} audio={handleSound} />
           : <div className="alert alert-danger mt-5 mx-4" role="alert">
             "{searchWord}" meaning not found
           </div>)
-
       }
     </>
 
