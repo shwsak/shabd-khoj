@@ -1,4 +1,6 @@
-# Dictonary
+# Shabd-khoj
+
+
 
 ## Features
 1. searching
@@ -38,12 +40,7 @@
 
 4. Multiple cards if data has more meanings - 
 
-## Tasks
-1. Loader - google search : how to create loader for async request in React
-2. UI enhancement (font, color combination and make it more attraactive) ✅
-3. logo 
-5. audio - audio tags
-6. upload code on github
+
  
 
 
