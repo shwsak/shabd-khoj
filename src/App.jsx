@@ -24,9 +24,7 @@ function App() {
 
 
   async function getDictionary() {
-
     let word = inputRef.current.value;
-
     setIsLoading(true);
 
     if (!word) {
@@ -42,11 +40,9 @@ function App() {
       setDictionary(() => [...json])
     }
     setIsLoading(false);
-
   }
 
   const dictionaryData = dictionary[0];
-
 
   return (
     <>

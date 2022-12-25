@@ -1,8 +1,8 @@
-
+import toast, {Toaster} from 'react-hot-toast'
 
 function SearchCards(props) {
 
-
+   
     let phonecticsArray = props.data.phonetics || "";
     let getAudio = phonecticsArray[0];
     let audio = getAudio ? getAudio.audio : "";
@@ -11,6 +11,8 @@ function SearchCards(props) {
         let playAudio = new Audio(audio);
         playAudio.play()
     }
+
+    const notify = () => toast('Sorry no prounciation is found');
 
     let phonetic = props.data.phonetic;
 
@@ -32,9 +34,11 @@ function SearchCards(props) {
 
     return (
 
-        <>
+        <>  <button onClick={notify}>Make me a toast</button>
+            
             {meanings ?
                 <div className="container my-5">
+                     <Toaster/>
                     <div className="card text-light m-auto">
                         <div className="card-body text-start p-4">
                             <div className="lh-1">
