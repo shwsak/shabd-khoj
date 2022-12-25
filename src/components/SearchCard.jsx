@@ -5,40 +5,49 @@ function SearchCards(props) {
    
     let phonecticsArray = props.data.phonetics || "";
     let getAudio = phonecticsArray[0];
-    let audio = getAudio ? getAudio.audio : "";
+    let audio = getAudio ? getAudio.audio : "";     
 
-    function handleProunciation() {
-        let playAudio = new Audio(audio);
-        playAudio.play()
+    function handleProunciation() {        
+        if(!audio){
+            notify()
+        }
+        else{
+
+            let playAudio = new Audio(audio);  
+            playAudio.play()
+        }
+       
     }
+    
 
-    const notify = () => toast('Sorry no prounciation is found');
+    const notify = () => toast('Sorry no prounciation is found',{
+        icon: '😔',
+    });
 
     let phonetic = props.data.phonetic;
 
     let meanings;
     if (props.data.meanings) {
-        meanings = props.data.meanings.map((m) => {
+        meanings = props.data.meanings.map((m,index) => {
             const pos = m.partOfSpeech;
-            const definitions = m.definitions.map((d) => {
+            const definitions = m.definitions.map((d, dIndex) => {
                 const definition = d.definition;
-                return <li>{definition}</li>
+                return <li key={`${index}${dIndex}`}>{definition}</li>
             })
-            return <div className='text-dark'>
+            return <div key={"meaning"+index} className='text-dark'>
                 <h4 className='fst-italic card-pos'>{pos}</h4>
                 <ol key={m.definitions}>{definitions}</ol>
             </div>
-
         })
     }
 
     return (
 
-        <>  <button onClick={notify}>Make me a toast</button>
-            
+        <>  
+            <Toaster />
             {meanings ?
                 <div className="container my-5">
-                     <Toaster/>
+                     
                     <div className="card text-light m-auto">
                         <div className="card-body text-start p-4">
                             <div className="lh-1">
@@ -68,8 +77,10 @@ function SearchCards(props) {
                     </div>
                 </div>
                 :
-                <div className="alert alert-danger mt-5 mx-4" role="alert">
+                <div className='container w-50 m-auto'>
+                <div className="alert alert-danger mt-5 mx-4 text-center" role="alert">
                     {props.word} meaning not found
+                </div>
                 </div>
             }
         </>

@@ -5,6 +5,7 @@ import SearchContainer from './components/SearchContainer'
 import logo from './assets/logo.png'
 import MoonLoader from "react-spinners/MoonLoader ";
 import { useEffect } from 'react';
+import Footer from './components/Footer';
 
 
 
@@ -44,6 +45,9 @@ function App() {
 
   const dictionaryData = dictionary[0];
 
+
+  
+
   return (
     <>
       <SearchContainer logo={logo} handleClick={getDictionary} getRef={inputRef} />
@@ -54,6 +58,7 @@ function App() {
         :
         <SearchCard data={dictionaryData} word={searchWord} />
       }
+      <Footer/>
     </>
 
   )
