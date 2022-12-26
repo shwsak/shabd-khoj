@@ -20,7 +20,12 @@ body {
 .search-logo{
   width: 210px;
 }
+
 .search-button{
+  background-color: #f79256;
+}
+
+.search-button:hover{
   background-color: #f79256;
 }
 
@@ -71,6 +76,17 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 250px;
+  
+}
+
+.ft-icon{
+  font-size: 35px;
+  color: #f79256;
+  padding: 27px 7px;
+  cursor: pointer;
+}
+
+@mediaquery screen and  {
   
 }
 
